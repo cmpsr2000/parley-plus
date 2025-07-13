@@ -30,10 +30,10 @@ in the corresponding
 1. Create a Fact script (ensure that it extends the `ParleyFactInterface` class)
    at: `res://facts/alice_gave_coffee_fact.gd`
 
-```gdscript
+```gdscript Evaluate Fact
 extends ParleyFactInterface
 
-func execute(ctx: ParleyContext, _values: Array) -> bool:
+func evaluate(ctx: ParleyContext, _values: Array) -> bool:
 	print('Did Alice give coffee?')
 	# Note, you can return any value here, it doesn't
 	# necessarily have to be a bool
@@ -44,7 +44,7 @@ func execute(ctx: ParleyContext, _values: Array) -> bool:
    recommended to return well-known values of the Fact (for example, when using
    a [Match Node](../nodes/match-node.md)). For example:
 
-```gdscript
+```gdscript Example Fact with well-known values
 extends ParleyFactInterface
 
 enum DifficultyLevel {
@@ -53,7 +53,7 @@ enum DifficultyLevel {
 	HARD,
 }
 
-func execute(ctx: ParleyContext, _values: Array) -> int:
+func evaluate(ctx: ParleyContext, _values: Array) -> int:
 	return ctx.get('difficulty_level', DifficultyLevel.NORMAL)
 
 func available_values() -> Array[DifficultyLevel]:

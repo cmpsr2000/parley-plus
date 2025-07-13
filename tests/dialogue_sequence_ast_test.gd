@@ -131,6 +131,32 @@ class Test_process_next:
 		assert_eq_deep(result.node_asts.map(map_to_dict), expected.map(map_to_dict))
 
 
+	var test_dialogue_ast_from_jump_node: ParleyDialogueSequenceAst = load('res://tests/fixtures/from_jump_node_input.ds')
+	var test_dialogue_ast_to_jump_node: ParleyDialogueSequenceAst = load('res://tests/fixtures/to_jump_node_input.ds')
+
+
+	var test_process_next_from_jump_node_cases: Array[Dictionary] = [
+		{"ctx": {}, "current_id": "node:1", "expected_ids": ["node:2"], "expected_dialogue_sequence_ref": "from_jump_node_input.ds" },
+		{"ctx": {}, "current_id": "node:2", "expected_ids": ["node:2"], "expected_dialogue_sequence_ref": "to_jump_node_input.ds" },
+	]
+
+	func test_process_next_from_jump_node(params: Dictionary = use_parameters(test_process_next_from_jump_node_cases)) -> void:
+		# Arrange
+		var expected_dialogue_sequence_ref: String = params.get('expected_dialogue_sequence_ref', 'unknown')
+
+		var current_node: ParleyNodeAst = test_dialogue_ast_from_jump_node.nodes.filter(func(node: ParleyNodeAst) -> bool: return node.id == params['current_id']).front()
+		var expected_ids: Array = _resolve_expected(params, test_dialogue_ast_to_jump_node if expected_dialogue_sequence_ref.begins_with('to_') else test_dialogue_ast_from_jump_node)
+		var ctx_data: Dictionary = params.get('ctx', {})
+		ctx = ParleyContext.create(test_dialogue_ast_from_jump_node, ctx_data)
+		
+		# Act
+		result = await ParleyDialogueSequenceAst.run(ctx, test_dialogue_ast_from_jump_node, current_node)
+
+		# Assert
+		assert_eq(result.dialogue_sequence.resource_path.get_file(), expected_dialogue_sequence_ref)
+		assert_eq_deep(result.node_asts.map(map_to_dict), expected_ids.map(map_to_dict))
+
+
 class Test_add_edge:
 	extends GutTest
 	var test_add_edge_cases: Array[Dictionary] = [

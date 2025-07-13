@@ -428,7 +428,7 @@ func next(ctx: ParleyContext, current_node: ParleyNodeAst = null, dry_run: bool 
 
 func _run_action(ctx: ParleyContext, node_ast: ParleyNodeAst) -> void:
 	if node_ast is not ParleyActionNodeAst:
-		push_error(ParleyUtils.log.error_msg("Action Node to execute is not an Action Node (node:%s)" % node_ast))
+		push_error(ParleyUtils.log.error_msg("Action Node to run is not an Action Node (node:%s)" % node_ast))
 		return
 	var action_node_ast: ParleyActionNodeAst = node_ast
 	var action: ParleyActionInterface
@@ -440,17 +440,17 @@ func _run_action(ctx: ParleyContext, node_ast: ParleyNodeAst) -> void:
 				return
 			action = action_script.new()
 		_:
-			push_error(ParleyUtils.log.error_msg("Action Node to execute has an unknown Action Type (node:%s)" % node_ast))
+			push_error(ParleyUtils.log.error_msg("Action Node to run has an unknown Action Type (node:%s)" % node_ast))
 			return
 	if action is not ParleyActionInterface or not action.has_method(&"run"):
-		push_error(ParleyUtils.log.error_msg("Action to execute is not a valid Action interface (node:%sm, action:%s)" % [node_ast, action]))
+		push_error(ParleyUtils.log.error_msg("Action to run is not a valid Action interface (node:%sm, action:%s)" % [node_ast, action]))
 		return
 	# Action could be a coroutine so always await it to determine the result of the Action
 	@warning_ignore("REDUNDANT_AWAIT")
 	var result: int = await action.run(ctx, action_node_ast.values)
 	action.free()
 	if result != OK:
-		push_error(ParleyUtils.log.error_msg("Unable to execute Action (code:%i)" % result))
+		push_error(ParleyUtils.log.error_msg("Unable to run Action (code:%i)" % result))
 
 
 ## Indicator for whether the node is at the end of the current Dialogue Sequence

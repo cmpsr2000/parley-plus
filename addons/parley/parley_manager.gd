@@ -34,6 +34,18 @@ static func get_instance() -> ParleyManager:
 	Engine.register_singleton(ParleyConstants.PARLEY_MANAGER_SINGLETON, parley_manager)
 	return parley_manager
 
+
+static func get_runtime_instance() -> ParleyRuntime:
+	if Engine.has_singleton(ParleyConstants.PARLEY_RUNTIME_SINGLETON):
+		var existing_parley_runtime: ParleyRuntime = Engine.get_singleton(ParleyConstants.PARLEY_RUNTIME_SINGLETON)
+		if existing_parley_runtime.version == ParleyConstants.VERSION:
+			return existing_parley_runtime
+		push_warning(ParleyUtils.log.warn_msg("Existing ParleyRuntime singleton version %s does not match expected version %s. Re-building...") % [existing_parley_runtime.version, ParleyConstants.VERSION])
+	var parley_runtime: ParleyRuntime = ParleyRuntime.new()
+	Engine.register_singleton(ParleyConstants.PARLEY_RUNTIME_SINGLETON, parley_runtime)
+	return parley_runtime
+
+
 func register_action_store(store: ParleyActionStore) -> void:
 	var path: String = ParleySettings.get_setting(ParleyConstants.ACTION_STORE_PATH)
 	var uid: String = ParleyUtils.resource.get_uid(store)

@@ -39,7 +39,7 @@ folder.
    in turn and sent to the Combiner to calculate whether the Condition Node is
    truthy (or not). Note, you create more than one condition for the Combiner.
 6. Select a Fact using the dropdown. In this case, we will select the
-   `Alice gave coffee` Fact. Facts are manually defined scripts that execute
+   `Alice gave coffee` Fact. Facts are manually defined scripts that evaluate
    when a condition is evaluated and return a value to be checked later in the
    condition.
 

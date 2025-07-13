@@ -1,7 +1,7 @@
 # Copyright 2024-2025 the Bisterix Studio authors. All rights reserved. MIT license.
 
 @tool
-extends Window
+class_name ParleyNewDialogueSequenceModal extends Window
 
 
 #region DEFS
@@ -10,13 +10,30 @@ extends Window
 @onready var choose_path_modal: FileDialog = %ChoosePathModal
 
 
+# TODO: get this from config (note, see the Node inspector as well)
+const default_current_dir: String = "res://dialogue_sequences"
+const default_current_file: String = "new_dialogue.ds"
+
+
 signal dialogue_ast_created(dialogue_ast: ParleyDialogueSequenceAst)
 #endregion
 
 
+#region LIFECYCLE
+func display() -> void:
+	show()
+	if path_edit:
+		path_edit.text = default_current_dir.path_join(default_current_file)
+	if title_edit:
+		title_edit.text = ""
+
+
 func _exit_tree() -> void:
 	if path_edit:
-		path_edit.text = ""
+		path_edit.text = default_current_dir.path_join(default_current_file)
+	if title_edit:
+		title_edit.text = ""
+#endregion
 
 
 #region SIGNALS
@@ -27,9 +44,8 @@ func _on_file_dialog_file_selected(path: String) -> void:
 
 func _on_choose_path_button_pressed() -> void:
 	choose_path_modal.show()
-	# TODO: get this from config (note, see the Node inspector as well)
-	choose_path_modal.current_dir = "res://dialogue_sequences"
-	choose_path_modal.current_file = "new_dialogue.ds"
+	choose_path_modal.current_dir = default_current_dir
+	choose_path_modal.current_file = default_current_file
 
 
 func _on_cancel_button_pressed() -> void:

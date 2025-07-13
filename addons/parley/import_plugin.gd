@@ -3,17 +3,26 @@
 @tool
 extends EditorImportPlugin
 
-const compiler_version: String = "0.2.0"
+
+#region DEFS
+const ParleyConstants = preload('./constants.gd')
+#endregion
+
+
+const ast_version: String = ParleyConstants.AST_VERSION
+
 
 enum Presets {DEFAULT}
 
+
 func _get_importer_name() -> String:
-	# NOTE: A change to this forces a re-import of all dialogue
-	return "parley_dialogue_ast_compiler_%s" % compiler_version
+	# NOTE: A change to this forces a re-import of all Dialogue Sequences
+	return "parley_dialogue_sequence_ast_%s" % ast_version
+
 
 func _get_visible_name() -> String:
-	# "Import as Parley Dialogue AST"
-	return "Parley Dialogue AST"
+	# "Import as Parley Dialogue Sequence AST"
+	return "Parley Dialogue Sequence AST"
 
 
 func _get_recognized_extensions() -> PackedStringArray:

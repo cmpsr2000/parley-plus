@@ -7,7 +7,9 @@ const ParleyConstants = preload("./constants.gd")
 
 static var DEFAULT_SETTINGS: Dictionary = {
 	# Dialogue
-	ParleyConstants.DIALOGUE_BALLOON_PATH: ParleyUtils.resource.get_uid(preload("./components/default_balloon.tscn")),
+	# Path: res://addons/parley/components/default_balloon.tscn
+	# This must be hard-coded here otherwise, we get compilation errors in the autoload
+	ParleyConstants.DIALOGUE_BALLOON_PATH: "uid://cf8jukut3b8qq",
 	# Stores
 	ParleyConstants.CHARACTER_STORE_PATH: "res://characters/character_store.tres",
 	ParleyConstants.ACTION_STORE_PATH: "res://actions/action_store.tres",

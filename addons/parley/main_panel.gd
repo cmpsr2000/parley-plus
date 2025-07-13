@@ -39,7 +39,7 @@ var parley_manager: ParleyManager
 @onready var file_menu: MenuButton = %FileMenu
 @onready var insert_menu: MenuButton = %InsertMenu
 @onready var docs_button: Button = %DocsButton
-@onready var new_dialogue_sequence_modal: Window = %NewDialogueSequenceModal
+@onready var new_dialogue_sequence_modal: ParleyNewDialogueSequenceModal = %NewDialogueSequenceModal
 @onready var edit_dialogue_sequence_modal: ParleyEditDialogueSequenceModal = %EditDialogueSequenceModal
 @onready var export_to_csv_modal: ParleyExportToCsvModal = %ExportToCsvModal
 @onready var editor: HSplitContainer = %EditorView
@@ -244,7 +244,7 @@ func _setup_insert_menu() -> void:
 func _on_file_id_pressed(id: int) -> void:
 	match id:
 		0:
-			new_dialogue_sequence_modal.show()
+			new_dialogue_sequence_modal.display()
 		1:
 			open_file_dialogue.show()
 			# TODO: get this from config (note, see the Node inspector as well)

@@ -1,11 +1,11 @@
 ---
 description: |
-  An Action Node gives the ability to execute functionality during the processing of a Dialogue Sequence.
+  An Action Node gives the ability to run functionality during the processing of a Dialogue Sequence.
 ---
 
-An Action Node gives the ability to execute functionality during the processing
-of a Dialogue Sequence. For example, emitting a signal, registering a journal
-entry, or updating state.
+An Action Node gives the ability to run functionality during the processing of a
+Dialogue Sequence. For example, emitting a signal, registering a journal entry,
+or updating state.
 
 ![action-node](../../../www/static/docs/action/action-node.png)
 
@@ -18,26 +18,26 @@ the Node at a quick glance.
 
 ## Type
 
-The type of the Action Node. This defines how the Action Node will be executed.
+The type of the Action Node. This defines how the Action Node will be run.
 Supported types are:
 
-- `Script` - the script associated with the Action Node will be executed when
-  the Node is processed during the Dialogue Sequence. This is the most flexible
-  way of defining Action Nodes.
+- `Script` - the script associated with the Action Node will be run when the
+  Node is processed during the Dialogue Sequence. This is the most flexible way
+  of defining Action Nodes.
 
 ## Action Script
 
-The action script to execute when the Action Node is processed. These are stored
-in the Action Store.
+The action script to run when the Action Node is processed. These are stored in
+the Action Store.
 
 Valid action scripts must implement the `ParleyActionInterface` by providing an
-`execute` method. For example:
+`run` method. For example:
 
 ```gdscript Example Action Script
-func execute(ctx: ParleyContext, values: Array) -> int:
-  print("Advancing time by %s" % [values[0]])
-  ctx.get('advance_time').emit(values[0])
-  return OK
+func run(ctx: ParleyContext, values: Array) -> int:
+	print("Advancing time by %s" % [values[0]])
+	ctx.get('advance_time').emit(values[0])
+	return OK
 ```
 
 The `ctx` parameter contains the context passed throughout the processing of the

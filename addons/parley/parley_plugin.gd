@@ -29,6 +29,7 @@ enum Component {
 #endregion
 
 
+#region LIFECYCLE
 func _enter_tree() -> void:
 	if Engine.is_editor_hint():
 		Engine.set_meta(ParleyConstants.PARLEY_PLUGIN_METADATA, self)
@@ -81,6 +82,32 @@ func _enter_tree() -> void:
 
 		# Hide the main panel. Very much required.
 		_make_visible(false)
+
+
+func _exit_tree() -> void:
+	if is_instance_valid(main_panel_instance):
+		main_panel_instance.queue_free()
+		
+	if import_plugin:
+		remove_import_plugin(import_plugin)
+		import_plugin = null
+		
+	if node_editor:
+		remove_control_from_docks(node_editor)
+		node_editor = null
+
+	if edges_editor:
+		remove_control_from_docks(edges_editor)
+		edges_editor = null
+
+	if stores_editor:
+		remove_control_from_docks(stores_editor)
+		stores_editor = null
+	
+	if Engine.has_meta(ParleyConstants.PARLEY_PLUGIN_METADATA):
+		Engine.remove_meta(ParleyConstants.PARLEY_PLUGIN_METADATA)
+#endregion
+
 
 #region SETTERS
 func _set_edges() -> void:
@@ -191,30 +218,7 @@ func _on_main_panel_dialogue_sequence_ast_selected(dialogue_sequence_ast: Parley
 #endregion
 
 
-func _exit_tree() -> void:
-	if is_instance_valid(main_panel_instance):
-		main_panel_instance.queue_free()
-		
-	if import_plugin:
-		remove_import_plugin(import_plugin)
-		import_plugin = null
-		
-	if node_editor:
-		remove_control_from_docks(node_editor)
-		node_editor = null
-
-	if edges_editor:
-		remove_control_from_docks(edges_editor)
-		edges_editor = null
-
-	if stores_editor:
-		remove_control_from_docks(stores_editor)
-		stores_editor = null
-	
-	if Engine.has_meta(ParleyConstants.PARLEY_PLUGIN_METADATA):
-		Engine.remove_meta(ParleyConstants.PARLEY_PLUGIN_METADATA)
-
-
+#region PLUGIN
 func _has_main_screen() -> bool:
 	return true
 
@@ -235,7 +239,7 @@ func _get_plugin_icon() -> Texture2D:
 
 
 func _enable_plugin() -> void:
-	add_autoload_singleton(ParleyConstants.PARLEY_RUNTIME_AUTOLOAD, "parley_runtime.gd")
+	add_autoload_singleton(ParleyConstants.PARLEY_RUNTIME_AUTOLOAD, _get_plugin_path() + "/parley_runtime.gd")
 
 
 func _disable_plugin() -> void:
@@ -246,3 +250,9 @@ func _disable_plugin() -> void:
 
 	if Engine.has_singleton(ParleyConstants.PARLEY_RUNTIME_SINGLETON):
 		Engine.unregister_singleton(ParleyConstants.PARLEY_RUNTIME_SINGLETON)
+
+
+func _get_plugin_path() -> String:
+	var resource_path: String = get_script().resource_path
+	return resource_path.get_base_dir()
+#endregion

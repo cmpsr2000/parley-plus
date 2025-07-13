@@ -13,14 +13,14 @@ activation of the Parley plugin. It can be used to:
 
 A Dialogue Sequence can be started using the Parley runtime as follows:
 
-```gdscript
+```gdscript Example Dialogue Sequence Run
 extends Node
 
 const basic_dialogue: ParleyDialogueSequenceAst = preload("res://dialogue_sequences/my_dialogue.ds")
 
 func _ready() -> void:
-  # Trigger the start of the Dialogue Sequence processing using the Parley autoload
-  var ctx: ParleyContext = ParleyContext.create(basic_dialogue)
+	# Trigger the start of the Dialogue Sequence processing using the Parley autoload
+	var ctx: ParleyContext = ParleyContext.create(basic_dialogue)
 	var _result: Node = Parley.run_dialogue(ctx, basic_dialogue)
 ```
 

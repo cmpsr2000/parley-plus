@@ -5,10 +5,10 @@
 
 [node name="NewDialogueSequenceModal" type="Window"]
 auto_translate_mode = 1
-title = "New Dialogue"
+title = "New Dialogue Sequence"
 initial_position = 2
-size = Vector2i(800, 400)
-min_size = Vector2i(800, 400)
+size = Vector2i(1000, 500)
+min_size = Vector2i(1000, 500)
 script = ExtResource("1_r74fp")
 
 [node name="NewDialogueMarginContainer" type="MarginContainer" parent="."]
@@ -38,6 +38,7 @@ text = "Path:"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+text = "res://dialogue_sequences/new_dialogue.ds"
 expand_to_text_length = true
 
 [node name="ChoosePathButton" type="Button" parent="NewDialogueMarginContainer/NewDialogueContainer/PathContainer"]
@@ -56,6 +57,7 @@ text = "Title:"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+placeholder_text = "Dialogue Sequence Title..."
 expand_to_text_length = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NewDialogueMarginContainer/NewDialogueContainer"]

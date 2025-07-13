@@ -24,6 +24,8 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	if path_edit:
 		path_edit.text = ""
+	if title_edit:
+		title_edit.text = ""
 #endregion
 
 

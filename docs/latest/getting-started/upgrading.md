@@ -15,16 +15,14 @@ your are on.
 ## Version `1.x.x` to `2.x.x`
 
 1. Download and [install](./installation.md) Parley `v2.x.x`.
-2. Replace of extensions of `ParleyFactInterface` with `ParleyFactInterface`.
-3. Within each Fact definition, add a method matching the `evaluate`
-   `ParleyFactInterface` method contract.
-4. Within each Fact definition, remove the `execute` method as this is no longer
-   used.
-5. Within each Action definition, add a method matching the `run`
-   `ParleyActionInterface` method contract.
-6. Within each Action definition, remove the `execute` method as this is no
-   longer used.
-7. Replace `Parley.start_dialogue` with `Parley.run_dialogue` and ensure the
+2. Replace of extensions of `FactInterface` with `ParleyFactInterface`.
+3. Within each Fact definition, rename the `execute` method to `evaluate` and
+   adjust the method contract by changing the type of the `ctx` parameter with
+   `ParleyContext`.
+4. Within each Action definition, rename the `execute` method to `run` and
+   adjust the method contract by changing the type of the `ctx` parameter with
+   `ParleyContext`.
+5. Replace `Parley.start_dialogue` with `Parley.run_dialogue` and ensure the
    `ctx` parameter is of type: `ParleyContext`.
-8. Replace any interface of `ParleyDialogueSequenceAst.process_next` with
+6. Replace any interface of `ParleyDialogueSequenceAst.process_next` with
    `ParleyDialogueSequenceAst.next` and adjust the interface as appropriate.

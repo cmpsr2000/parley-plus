@@ -31,7 +31,7 @@ folder.
    more info you can provide up front the better! In this example, we write:
    `Alice coffee status`.
 4. Select a Fact using the dropdown. In this case, we will select the
-   `Snooker balls` Fact. Facts are manually defined scripts that execute when a
+   `Snooker balls` Fact. Facts are manually defined scripts that evaluate when a
    match is evaluated and return a value to be checked later in the match. These
    also define well-known values that are used to select against.
 
