@@ -36,6 +36,8 @@ nodes = Array[ExtResource("4_b0sdx")]([])
 [node name="JumpNode" type="GraphNode"]
 z_index = 10
 custom_minimum_size = Vector2(350, 350)
+offset_right = 350.0
+offset_bottom = 350.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_b0sdx")
 theme_override_styles/titlebar = SubResource("StyleBoxFlat_or5u4")
 title = "Jump [ID: ]"

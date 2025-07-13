@@ -15,6 +15,7 @@ const action_icon: CompressedTexture2D = preload("./assets/Action.svg")
 const start_node_icon: CompressedTexture2D = preload("./assets/Start.svg")
 const end_node_icon: CompressedTexture2D = preload("./assets/End.svg")
 const group_node_icon: CompressedTexture2D = preload("./assets/Group.svg")
+const jump_node_icon: CompressedTexture2D = preload("./assets/Jump.svg")
 
 
 var parley_manager: ParleyManager
@@ -230,8 +231,7 @@ func _setup_insert_menu() -> void:
 	popup.add_icon_item(condition_icon, ParleyDialogueSequenceAst.get_type_name(ParleyDialogueSequenceAst.Type.MATCH), ParleyDialogueSequenceAst.Type.MATCH)
 	popup.add_separator("Actions")
 	popup.add_icon_item(action_icon, ParleyDialogueSequenceAst.get_type_name(ParleyDialogueSequenceAst.Type.ACTION), ParleyDialogueSequenceAst.Type.ACTION)
-	# TODO: add jump node icon
-	popup.add_icon_item(action_icon, ParleyDialogueSequenceAst.get_type_name(ParleyDialogueSequenceAst.Type.JUMP), ParleyDialogueSequenceAst.Type.JUMP)
+	popup.add_icon_item(jump_node_icon, ParleyDialogueSequenceAst.get_type_name(ParleyDialogueSequenceAst.Type.JUMP), ParleyDialogueSequenceAst.Type.JUMP)
 	popup.add_separator("Misc")
 	popup.add_icon_item(start_node_icon, ParleyDialogueSequenceAst.get_type_name(ParleyDialogueSequenceAst.Type.START), ParleyDialogueSequenceAst.Type.START)
 	popup.add_icon_item(end_node_icon, ParleyDialogueSequenceAst.get_type_name(ParleyDialogueSequenceAst.Type.END), ParleyDialogueSequenceAst.Type.END)

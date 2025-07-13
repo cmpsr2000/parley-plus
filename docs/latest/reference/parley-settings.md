@@ -47,7 +47,7 @@ Default: `res://characters/character_store.tres`
 ## Dialogue Balloon Path
 
 This defines the path to the default Dialogue balloon that is used to render the
-dialogue when testing Dialogue Sequences.
+dialogue when testing and running Dialogue Sequences.
 
 Setting path: `parley/dialogue/dialogue_balloon_path`
 

@@ -73,6 +73,12 @@ const toc: RawTableOfContents = {
           ["character-store", "Character Store"],
         ],
       },
+      customisation: {
+        title: "Customisation",
+        pages: [
+          ["customise-dialogue-balloon", "Customise Dialogue Balloon"],
+        ],
+      },
       examples: {
         title: "Examples",
         pages: [],
