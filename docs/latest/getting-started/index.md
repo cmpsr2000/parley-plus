@@ -16,9 +16,9 @@ The documentation assumes you have the latest version of
 To go from zero to an integrated Parley Dialogue Sequence running within your
 game, follow these guides in order:
 
-1. [Installation](./installation.md)
-2. [Create a Dialogue Sequence](./create-dialogue-sequenceallation.md)
-3. [Run a Dialogue Sequence](./run-dialogue-sequence.md)
+1. [Installation](../getting-started/installation.md)
+2. [Create a Dialogue Sequence](../getting-started/create-dialogue-sequence.md)
+3. [Run a Dialogue Sequence](../getting-started/run-dialogue-sequence.md)
 
 ![parley-dull-demo](../../../www/static/docs/parley-full-demo.gif)
 
