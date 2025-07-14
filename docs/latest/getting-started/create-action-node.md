@@ -3,10 +3,10 @@ description: |
   Create an Action Node
 ---
 
-An Action Node gives the ability to execute functionality during the processing
-of a Dialogue Sequence. For example, emitting a signal, registering a journal
-entry, or updating state. You can find all sorts of Dialogue Sequence examples
-in the Parley
+An Action Node gives the ability to run functionality during the processing of a
+Dialogue Sequence. For example, emitting a signal, registering a journal entry,
+or updating state. You can find all sorts of Dialogue Sequence examples in the
+Parley
 [`examples`](https://github.com/bisterix-studio/parley/tree/main/examples)
 folder.
 
@@ -33,7 +33,7 @@ folder.
    `Advance time [4h]`
 4. Choose the type of Action you want from the dropdown. In this example, we
    choose: `Script`.
-5. Select the Action you want execute as part of this Node. In this example, we
+5. Select the Action you want run as part of this Node. In this example, we
    choose: `Advance Time`.
 
 > [tip]: You can click on the pencil icon to the right of the Action to view the

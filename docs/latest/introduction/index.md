@@ -19,7 +19,8 @@ Write your Dialogue Sequences by defining the graph for your Dialogue Sequence
 which are backed by a well-defined Dialogue AST for easy management and
 integration within your game.
 
-You can install it via the Asset Library or
+You can install it via the
+[Asset Library](https://godotengine.org/asset-library/asset/4132) or
 [downloading a copy](https://github.com/bisterix-studio/parley/archive/refs/heads/main.zip)
 from GitHub.
 
@@ -32,6 +33,7 @@ Some stand out features:
   - [Condition](../nodes/condition-node.md)
   - [Match](../nodes/match-node.md)
   - [Action](../nodes/action-node.md)
+  - [Jump](../nodes/jump-node.md)
   - [Group](../nodes/group-node.md)
   - [Start](../nodes/start-node.md)
   - [End](../nodes/end-node.md)
@@ -48,13 +50,34 @@ Some stand out features:
 
 ![parley](../../../www/static/docs/parley.png)
 
+## Upcoming Features
+
+Here are some key features on the Parley horizon. We are always open to new
+ideas, please don't hesitate to
+[get-in-touch](https://github.com/bisterix-studio/parley/issues).
+
+- Translation support
+- Dialogue text expressions
+
 ## License
 
 Parley is 100% free and open-source, under the MIT licence.
 [The license is distributed with Parley and can be found in the `addons/parley` folder](https://github.com/bisterix-studio/parley/blob/main/addons/parley/LICENSE).
+
+This package is [Treeware](https://treeware.earth). If you use it in production,
+then we ask that you
+[**buy the world a tree**](https://plant.treeware.earth/bisterix-studio/parley)
+to thank us for our work. By contributing to the Treeware forest you’ll be
+creating employment for local families and restoring wildlife habitats.
 
 ## Contributions
 
 [Contributions](https://github.com/bisterix-studio/parley/blob/main/CONTRIBUTING.md),
 issues and feature requests are very welcome. If you are using this package and
 fixed a bug for yourself, please consider submitting a PR!
+
+<p align="center">
+  <a href="https://github.com/bisterix-studio/parley/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=bisterix-studio/parley&columns=8" />
+  </a>
+</p>

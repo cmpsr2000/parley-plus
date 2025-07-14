@@ -29,6 +29,7 @@ const toc: RawTableOfContents = {
         title: "Getting Started",
         pages: [
           ["installation", "Installation"],
+          ["upgrading", "Upgrading"],
           ["create-dialogue-sequence", "Create a Dialogue Sequence"],
           ["run-dialogue-sequence", "Run a Dialogue Sequence"],
           ["create-start-node", "Create a Start Node"],
@@ -37,11 +38,13 @@ const toc: RawTableOfContents = {
           ["create-condition-node", "Create a Condition Node"],
           ["create-match-node", "Create a Match Node"],
           ["create-action-node", "Create an Action Node"],
+          ["create-jump-node", "Create a Jump Node"],
           ["create-group-node", "Create a Group Node"],
           ["create-end-node", "Create an End Node"],
           ["register-fact", "Register a Fact"],
           ["register-action", "Register an Action"],
           ["register-character", "Register a Character"],
+          ["manage-dialogue-sequence", "Manage a Dialogue Sequence"],
         ],
       },
       concepts: {
@@ -59,6 +62,7 @@ const toc: RawTableOfContents = {
           ["condition-node", "Condition Node"],
           ["match-node", "Match Node"],
           ["action-node", "Action Node"],
+          ["jump-node", "Jump Node"],
           ["start-node", "Start Node"],
           ["end-node", "End Node"],
           ["group-node", "Group Node"],
@@ -70,6 +74,12 @@ const toc: RawTableOfContents = {
           ["fact-store", "Fact Store"],
           ["action-store", "Action Store"],
           ["character-store", "Character Store"],
+        ],
+      },
+      customisation: {
+        title: "Customisation",
+        pages: [
+          ["customise-dialogue-balloon", "Customise Dialogue Balloon"],
         ],
       },
       examples: {

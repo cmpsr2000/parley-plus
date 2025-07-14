@@ -27,13 +27,13 @@ in the corresponding
 > **Note:** it is assumed that the default Parley settings are used for the Fact
 > Store and it is stored at: `res://facts/fact_store_main.tres`
 
-1. Create a Fact script (ensure that it extends the `FactInterface` class) at:
-   `res://facts/alice_gave_coffee_fact.gd`
+1. Create a Fact script (ensure that it extends the `ParleyFactInterface` class)
+   at: `res://facts/alice_gave_coffee_fact.gd`
 
-```gdscript
-extends FactInterface
+```gdscript Evaluate Fact
+extends ParleyFactInterface
 
-func execute(ctx: Dictionary, _values: Array) -> bool:
+func evaluate(ctx: ParleyContext, _values: Array) -> bool:
 	print('Did Alice give coffee?')
 	# Note, you can return any value here, it doesn't
 	# necessarily have to be a bool
@@ -44,8 +44,8 @@ func execute(ctx: Dictionary, _values: Array) -> bool:
    recommended to return well-known values of the Fact (for example, when using
    a [Match Node](../nodes/match-node.md)). For example:
 
-```gdscript
-extends FactInterface
+```gdscript Example Fact with well-known values
+extends ParleyFactInterface
 
 enum DifficultyLevel {
 	EASY,
@@ -53,7 +53,7 @@ enum DifficultyLevel {
 	HARD,
 }
 
-func execute(ctx: Dictionary, _values: Array) -> int:
+func evaluate(ctx: ParleyContext, _values: Array) -> int:
 	return ctx.get('difficulty_level', DifficultyLevel.NORMAL)
 
 func available_values() -> Array[DifficultyLevel]:

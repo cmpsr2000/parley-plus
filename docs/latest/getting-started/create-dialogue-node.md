@@ -26,7 +26,7 @@ folder.
 1. Create a Dialogue Node using the `Insert` dropdown.
 2. Click on the created Dialogue Node in the graph view to open up the Dialogue
    Node Editor.
-3. Choose a character for your Dialogue Node form the dropdown.
+3. Choose a character for your Dialogue Node from the dropdown.
 4. Write some text for your Dialogue that will be displayed to the user.
 5. Click the `Save` button in the Parley Editor and there we have it! Our first
    Dialogue Sequence with dialogue.

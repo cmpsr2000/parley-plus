@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Parley"
-run/main_scene="uid://ckubjbp3e7yy3"
+run/main_scene="uid://ic2wjie7ub0l"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
+
+[autoload]
+
+Parley="*res://addons/parley/parley_runtime.gd"
 
 [debug]
 

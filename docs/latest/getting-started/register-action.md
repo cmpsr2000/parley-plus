@@ -3,7 +3,7 @@ description: |
   Register an Action
 ---
 
-Actions are resources in Parley used to execute defined functionality during the
+Actions are resources in Parley used to run defined functionality during the
 running of a Dialogue Sequence. For example, an Action could contain
 functionality to: emit a signal, register a journal entry, or update state.
 
@@ -34,10 +34,10 @@ Node in the corresponding
 1. Create an Action script (ensure that it extends the `ParleyActionInterface`
    class) at: `res://actions/advance_time_action.gd`
 
-```gdscript
+```gdscript Example Action
 extends ParleyActionInterface
 
-func execute(_ctx: Dictionary, values: Array) -> int:
+func run(_ctx: ParleyContext, values: Array) -> int:
 	print("Advancing time by %s" % [values[0]])
 	return OK
 ```

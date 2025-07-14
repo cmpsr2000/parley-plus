@@ -35,29 +35,52 @@ within your game. For creating a Dialogue Sequence, please refer to the
 1. Open your Scene script in the Godot Editor and load your Dialogue Sequence
    with the following code:
 
-```gdscript
+```gdscript Dialogue Sequence load
 const basic_dialogue: ParleyDialogueSequenceAst = preload("res://dialogue_sequences/my_dialogue.ds")
 ```
 
 2. Then, in the `_ready` lifecycle method, trigger the start of the Dialogue
    Sequence processing using the `Parley` autoload with the following code:
 
-```gdscript
+```gdscript Dialogue Sequence Run
+var ctx: ParleyContext
+
 func _ready() -> void:
-  # Trigger the start of the Dialogue Sequence processing using the Parley autoload
-	var _result: Node = Parley.start_dialogue({}, basic_dialogue)
+	# Trigger the start of the Dialogue Sequence processing using the Parley autoload
+	ctx = ParleyContext.create(basic_dialogue)
+	var _result: Node = Parley.run_dialogue(ctx, basic_dialogue)
 ```
 
-3. And that's it! Your script should look something like:
+3. Clean up upon tree exit from scene:
 
-```gdscript
+```gdscript Clean up
+func _exit_tree() -> void:
+	# Ensure ctx is fully cleaned up
+	if ctx:
+		ctx.free()
+```
+
+4. And that's it! Your script should look something like:
+
+```gdscript Example Dialogue Run
 extends Node
 
 const basic_dialogue: ParleyDialogueSequenceAst = preload("res://dialogue_sequences/my_dialogue.ds")
 
+
+var ctx: ParleyContext
+
+
 func _ready() -> void:
-  # Trigger the start of the Dialogue Sequence processing using the Parley autoload
-	var _result: Node = Parley.start_dialogue({}, basic_dialogue)
+	# Trigger the start of the Dialogue Sequence processing using the Parley autoload
+	ctx = ParleyContext.create(basic_dialogue)
+	var _result: Node = Parley.run_dialogue(ctx, basic_dialogue)
+
+
+func _exit_tree() -> void:
+	# Ensure ctx is fully cleaned up
+	if ctx:
+		ctx.free()
 ```
 
 > [tip]: If you would like to customise the running of Parley Dialogue Sequences
