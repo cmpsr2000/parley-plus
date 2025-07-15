@@ -13,10 +13,6 @@ export default function NavigationBar(
       name: "Docs",
       href: "/docs",
     },
-    {
-      name: "Showcase",
-      href: "/showcase",
-    },
   ];
   return (
     <nav class={"flex " + (props.class ?? "")} f-client-nav={false}>
