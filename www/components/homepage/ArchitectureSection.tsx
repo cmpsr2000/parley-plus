@@ -35,7 +35,7 @@ export function ArchitectureSection() {
             alt="Parley Graph View"
           />
           <ExampleArrow class="[transform:rotateY(-180deg)]" />
-          <CodeWindow name="islands/Counter.tsx">
+          <CodeWindow name="Dialogue Sequence AST">
             <CodeBlock
               code={exampleDialogueSequenceJson}
               lang="json"
