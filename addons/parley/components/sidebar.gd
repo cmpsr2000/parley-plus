@@ -16,6 +16,8 @@ var dialogue_ast_filter: String = "": set = _set_dialogue_ast_filter
 @onready var node_list: ItemList = %NodesItemList
 @onready var dialogue_sequences_list: ItemList = %DialogueSequencesList
 @onready var current_dialogue_sequence_label: LineEdit = %CurrentDialogueSequence
+@onready var manage_dialogue_sequence_button: Button = %ManageDialogueSequenceButton
+@onready var no_dialogue_sequence_warning_button: Button = %NoDialogueSequenceWarningButton
 
 
 signal dialogue_ast_selected(dialogue_ast: ParleyDialogueSequenceAst)
@@ -29,6 +31,7 @@ func _ready() -> void:
 	dialogue_asts = []
 	_set_current_dialogue_ast(current_dialogue_ast)
 	current_dialogue_sequence_label.tooltip_text = "Edit the Dialogue Sequence"
+	no_dialogue_sequence_warning_button.tooltip_text = "No Dialogue Sequence opened. Please create or open one via the Parley file menu in the top left-hand side."
 #endregion
 
 
@@ -93,8 +96,12 @@ func _render_current_dialogue_sequence() -> void:
 	if current_dialogue_sequence_label:
 		if current_dialogue_ast and current_dialogue_ast.resource_path:
 			current_dialogue_sequence_label.text = current_dialogue_ast.resource_path.get_file()
+			no_dialogue_sequence_warning_button.hide()
+			manage_dialogue_sequence_button.show()
 		else:
 			current_dialogue_sequence_label.text = "No Dialogue Sequence Selected"
+			no_dialogue_sequence_warning_button.show()
+			manage_dialogue_sequence_button.hide()
 #endregion
 
 

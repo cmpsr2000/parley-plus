@@ -27,7 +27,7 @@ func run_dialogue(ctx: Context, dialogue_sequence_ast: DialogueSequenceAst, star
 	var current_scene: Node = _get_current_scene()
 	var dialogue_balloon_path: String = Settings.get_setting(Constants.DIALOGUE_BALLOON_PATH)
 	if not ResourceLoader.exists(dialogue_balloon_path):
-		print_rich(Utils.log.info_msg("Dialogue balloon does not exist at: %s. Stopping..."))
+		print_rich(Utils.log.info_msg("Dialogue balloon does not exist at: %s. Stopping..." % dialogue_balloon_path))
 		return
 	var dialogue_balloon_scene: PackedScene = load(dialogue_balloon_path)
 	var balloon: Node = dialogue_balloon_scene.instantiate()

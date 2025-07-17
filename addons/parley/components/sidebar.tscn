@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl5g47dhb7hmk"]
+[gd_scene load_steps=6 format=3 uid="uid://bl5g47dhb7hmk"]
 
 [ext_resource type="Script" uid="uid://dbqp7dc5s5e3n" path="res://addons/parley/components/sidebar.gd" id="1_d0u7e"]
 [ext_resource type="Texture2D" uid="uid://cr4knibdm85n1" path="res://addons/parley/assets/Search.svg" id="2_sqyhy"]
 [ext_resource type="Texture2D" uid="uid://c4qx01xbrjp7h" path="res://addons/parley/assets/Edit.svg" id="3_l7xuh"]
+[ext_resource type="Texture2D" uid="uid://drrcpeyo5x1ih" path="res://addons/parley/assets/Warning.svg" id="4_0tc7b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7xuh"]
 content_margin_left = 12.0
@@ -74,8 +75,14 @@ placeholder_text = "No Dialogue Sequence Selected"
 editable = false
 
 [node name="ManageDialogueSequenceButton" type="Button" parent="VSplitContainer/DialogueSequenceContainer/VBoxContainer/ManageDialogueSequenceContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("3_l7xuh")
+
+[node name="NoDialogueSequenceWarningButton" type="Button" parent="VSplitContainer/DialogueSequenceContainer/VBoxContainer/ManageDialogueSequenceContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("4_0tc7b")
 
 [node name="NodeList" type="VBoxContainer" parent="VSplitContainer/DialogueSequenceContainer/VBoxContainer"]
 layout_mode = 2

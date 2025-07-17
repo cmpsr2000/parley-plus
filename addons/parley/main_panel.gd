@@ -292,27 +292,36 @@ func _on_new_dialogue_sequence_modal_dialogue_ast_created(new_dialogue_ast: Parl
 
 
 func _on_insert_id_pressed(type: ParleyDialogueSequenceAst.Type) -> void:
+	if not dialogue_ast:
+		push_warning(ParleyUtils.log.warn_msg("Unable to add Node of type %s to the Dialogue Sequence. Dialogue Sequence is not currently loaded into Parley. Please open one via the file menu in the top left-hand side." % ParleyDialogueSequenceAst.get_type_name(type)))
+		return
 	var ast_node: Variant = dialogue_ast.add_new_node(type, (graph_view.scroll_offset + graph_view.size * 0.5) / graph_view.zoom)
 	if ast_node:
 		await refresh()
 
 
 func _on_save_pressed() -> void:
-	_save_dialogue()
+	var result: int = _save_dialogue()
+	if result != OK:
+		return
 	# This is needed to reset the Graph and ensure
 	# that no weirdness is going to happen. For example
 	# move the group nodes after a save when refresh isn't present
 	await refresh()
 
 
-func _save_dialogue() -> void:
+func _save_dialogue() -> int:
+	if not dialogue_ast or not dialogue_ast.resource_path:
+		push_error(ParleyUtils.log.error_msg("Unable to save Dialogue Sequence. Dialogue Sequence does not exist in the file system, please create one using the file menu in the top left-hand side"))
+		return ERR_DOES_NOT_EXIST
 	var ok: int = ResourceSaver.save(dialogue_ast)
 	if ok != OK:
 		push_warning(ParleyUtils.log.warn_msg("Error saving the Dialogue AST: %d" % [ok]))
-		return
+		return ok
 	# This is needed to correctly reload upon file saves
 	if Engine.is_editor_hint():
 		EditorInterface.get_resource_filesystem().reimport_files([dialogue_ast.resource_path])
+	return OK
 
 func _on_arrange_nodes_button_pressed() -> void:
 	selected_node_id = null
@@ -325,13 +334,19 @@ func _on_refresh_button_pressed() -> void:
 
 func _on_test_dialogue_from_start_button_pressed() -> void:
 	# TODO: dialogue is technically async so we should ideally wait here
-	_save_dialogue()
+	var result: int = _save_dialogue()
+	if result != OK:
+		push_error("Error saving Dialogue Sequence: %s. Unable to start Dialogue Sequence testing from start..." % error_string(result))
+		return
 	if parley_manager:
 		parley_manager.run_test_dialogue_from_start(dialogue_ast)
 
 func _on_test_dialogue_from_selected_button_pressed() -> void:
 	# TODO: dialogue is technically async so we should ideally wait here
-	_save_dialogue()
+	var result: int = _save_dialogue()
+	if result != OK:
+		push_error("Error saving Dialogue Sequence: %s. Unable to start Dialogue Sequence testing from Node %s..." % [error_string(result), selected_node_id])
+		return
 	if parley_manager:
 		parley_manager.run_test_dialogue_from_selected(dialogue_ast, selected_node_id)
 #endregion
@@ -620,7 +635,10 @@ func _on_sidebar_edit_dialogue_ast_pressed(selected_dialogue_ast_for_edit: Parle
 
 
 func _on_edit_dialogue_sequence_modal_dialogue_ast_edited(_dialogue_ast: ParleyDialogueSequenceAst) -> void:
-	_save_dialogue()
+	var result: int = _save_dialogue()
+	if result != OK:
+		push_error("Error saving Dialogue Sequence: %s." % error_string(result))
+		return
 	# This is needed to reset the Graph and ensure
 	# that no weirdness is going to happen. For example
 	# move the group nodes after a save when refresh isn't present
