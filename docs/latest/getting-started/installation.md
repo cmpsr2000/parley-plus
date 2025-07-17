@@ -21,6 +21,11 @@ Editor.
 5. Complete the first time installation by following the
    [first-time installation instructions](#first-time-installation) below.
 
+> [tip]: If you experience compilation errors after downloading Parley, an easy
+> way of rectifying this is to restart your Godot project. If the problem
+> persists however, please raise an issue
+> [here](https://github.com/bisterix-studio/parley/issue).
+
 ### Option 2: Download and install
 
 1. Download the compressed zip file from the
@@ -31,6 +36,11 @@ Editor.
    `addons` directory in your project.
 3. Complete the first-time installation by following the
    [first-time installation instructions](#first-time-installation) below.
+
+> [tip]: If you experience compilation errors after extracting the Parley zip
+> file, an easy way of rectifying this is to restart your Godot project. If the
+> problem persists however, please raise an issue
+> [here](https://github.com/bisterix-studio/parley/issue).
 
 ### First-time installation
 
